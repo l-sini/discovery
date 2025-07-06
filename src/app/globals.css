@@ -22,3 +22,7 @@
 body {
   font-family: var(--font-noto-sans-kr), Arial, Helvetica, sans-serif;
 }
+
+.clip-bookmark {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 80%, 0% 100%);
+}

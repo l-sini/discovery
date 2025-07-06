@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${notoSansKr.variable} antialiased`}>
+        <div id='modal-root' />
         <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
