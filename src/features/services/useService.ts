@@ -10,7 +10,7 @@ function detectPlatform(): 'android' | 'ios' | 'unknown' {
   return 'unknown';
 }
 
-export const useServices = () => {
+export const useServices = (locale: 'ko' | 'en') => {
   const {
     data = [],
     isLoading,
@@ -21,8 +21,6 @@ export const useServices = () => {
     staleTime: 5 * 60 * 1000,
     refetchOnWindowFocus: false,
   });
-
-  const locale = (typeof navigator !== 'undefined' ? navigator.language : 'en').startsWith('ko') ? 'ko' : 'en';
 
   const platform = detectPlatform();
   const env = process.env.NODE_ENV as 'development' | 'stage' | 'production';

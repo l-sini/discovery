@@ -3,11 +3,12 @@ import FavoritesList from '@/features/favorites/components/organisms/FavoritesLi
 import ServiceList from '@/features/services/components/organisms/ServiceList';
 
 export default function Home() {
+  const locale = typeof navigator !== 'undefined' && navigator.language.startsWith('ko') ? 'ko' : 'en';
   return (
     <div>
-      <BannerCarousel locale='ko' />
-      <FavoritesList />
-      <ServiceList />
+      <BannerCarousel locale={locale} />
+      <FavoritesList locale={locale} />
+      <ServiceList locale={locale} />
     </div>
   );
 }

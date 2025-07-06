@@ -27,8 +27,9 @@ export const BannerCarousel = ({ locale }: Props) => {
     emblaApi?.on('select', onSelect);
   }, [emblaApi, onSelect]);
 
-  if (isLoading) return <p>Loading…</p>;
-  if (isError || !banners) return <p>Error loading banners.</p>;
+  if (isLoading) return <p>{locale === 'ko' ? '로딩 중…' : 'Loading…'}</p>;
+  if (isError || !banners)
+    return <p>{locale === 'ko' ? '배너를 불러오는 중 오류가 발생했습니다.' : 'Error loading banners.'}</p>;
 
   const total = banners.length;
   const current = selectedIndex + 1;

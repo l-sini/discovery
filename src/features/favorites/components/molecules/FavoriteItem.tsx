@@ -13,9 +13,10 @@ interface Props {
   iconUrl: string;
   onDelete: (id: string) => void;
   isDeleting?: boolean;
+  locale: 'ko' | 'en';
 }
 
-const FavoriteItem = ({ id, name, description, link, iconUrl, onDelete, isDeleting = false }: Props) => (
+const FavoriteItem = ({ id, name, description, link, iconUrl, onDelete, isDeleting = false, locale }: Props) => (
   <li className='flex items-center justify-between px-4 py-3 border-b last:border-b-0'>
     <Link href={link} target='_blank' rel='noopener noreferrer' className='flex items-center space-x-3 flex-1'>
       <div className='w-10 h-10 flex-shrink-0 bg-white rounded-lg shadow flex items-center justify-center'>
@@ -29,7 +30,7 @@ const FavoriteItem = ({ id, name, description, link, iconUrl, onDelete, isDeleti
         <p className='text-xs text-gray-400 line-clamp-1'>{link}</p>
       </div>
     </Link>
-    <DeleteButton onClick={() => onDelete(id)} isDeleting={isDeleting} />
+    <DeleteButton onClick={() => onDelete(id)} isDeleting={isDeleting} locale={locale} />
   </li>
 );
 

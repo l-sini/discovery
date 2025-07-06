@@ -6,11 +6,11 @@ import { IServiceItem } from '@/features/services/service.interface';
 interface Props {
   service: IServiceItem;
   onClickItem: () => void;
+  locale: 'ko' | 'en';
 }
 
-const ServiceItem = ({ service, onClickItem }: Props) => {
+const ServiceItem = ({ service, onClickItem, locale }: Props) => {
   const { name, iconUrl, descriptionEn, descriptionKo } = service;
-  const locale = 'ko';
 
   const description = locale === 'ko' && descriptionKo ? descriptionKo : descriptionEn;
 

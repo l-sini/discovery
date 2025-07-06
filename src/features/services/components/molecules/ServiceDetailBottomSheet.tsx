@@ -10,9 +10,10 @@ interface Props {
   open: boolean;
   service: IServiceItem & { link: string };
   onClose: () => void;
+  locale: 'ko' | 'en';
 }
 
-const ServiceDetailBottomSheet = ({ open, service, onClose }: Props) => {
+const ServiceDetailBottomSheet = ({ open, service, onClose, locale }: Props) => {
   const root = document.getElementById('modal-root');
 
   useEffect(() => {
@@ -24,7 +25,6 @@ const ServiceDetailBottomSheet = ({ open, service, onClose }: Props) => {
 
   if (!root || !open) return null;
 
-  const locale = 'ko';
   const description = locale === 'ko' && service.descriptionKo ? service.descriptionKo : service.descriptionEn;
 
   return createPortal(
@@ -49,12 +49,14 @@ const ServiceDetailBottomSheet = ({ open, service, onClose }: Props) => {
             <h3 className='text-xl font-bold'>{service.name}</h3>
           </div>
           <div className='mb-6'>
-            <h4 className='text-base font-semibold mb-1'>Description</h4>
+            <h4 className='text-base font-semibold mb-1'>{locale === 'ko' ? '설명' : 'Description'}</h4>
             <p className='text-sm text-gray-600 leading-relaxed'>{description}</p>
           </div>
           {service.supportedNetworks && (
             <div className='mb-6'>
-              <h4 className='text-base font-semibold mb-1'>Supported Networks</h4>
+              <h4 className='text-base font-semibold mb-1'>
+                {locale === 'ko' ? '지원 네트워크' : 'Supported Networks'}
+              </h4>
               <p className='text-sm text-gray-600'>{service.supportedNetworks.join(', ')}</p>
             </div>
           )}
@@ -64,7 +66,7 @@ const ServiceDetailBottomSheet = ({ open, service, onClose }: Props) => {
             onClick={() => window.open(service.link, '_blank')}
             className='w-full py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition'
           >
-            Go
+            {locale === 'ko' ? '서비스 바로가기' : 'Go'}
           </button>
         </div>
       </div>
