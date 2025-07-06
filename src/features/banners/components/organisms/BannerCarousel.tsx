@@ -2,11 +2,10 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
+import BannerSlide from '@/features/banners/components/molecules/BannerSlide';
 import { useBanners } from '@/features/banners/useBanner';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
-
-import BannerSlide from '../molecules/BannerSlide';
 
 interface Props {
   locale: 'en' | 'ko';
